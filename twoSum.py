@@ -1,3 +1,8 @@
+'''
+@Author: Z1hgq
+@Date: 2019-09-16 14:03:36
+@LastEditTime: 2019-09-16 14:03:36
+'''
 def twoSumI(nums,target):
         count = 0
         res = []
