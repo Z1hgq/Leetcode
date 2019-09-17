@@ -1,7 +1,7 @@
 /*
  * @Author: Z1hgq
  * @Date: 2019-09-17 14:26:50
- * @LastEditTime: 2019-09-17 18:05:19
+ * @LastEditTime: 2019-09-17 18:07:46
  */
 
 /**
@@ -17,7 +17,7 @@ var lengthOfLongestSubstring = function(s) {
         if(temp.indexOf(s[i]) === -1) { //如果不存在的话向数组里继续添加
             temp.push(s[i]);
         } else {
-            temp.shift(); //如果存在的话表明当前这个子串不符合无重复字符的要求，删除队头的元素，重新执行这次循环
+            temp.shift(); //如果存在的话表明当前这个子串不符合无重复字符的要求，删除队头的元素，跳出这次循环
             continue;
         }
         res = Math.max(res, temp.length);
