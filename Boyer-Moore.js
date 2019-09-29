@@ -14,12 +14,12 @@ function Bm(parent, child) {
             } else {
                 badC = parent[baseP + i];
                 goodS = child.substring(i + 1);
-                //后移
-
-                baseP += bad(badC, child, i);
+                //选择坏字符规则和好后缀规则计算出的较长的后移位数
+                baseP += bad(badC, child, i) > good(goodS, child) ? bad(badC, child, i) : good(goodS, child);
                 break;
             }
         }
+        return -1;
     }
 }
 
