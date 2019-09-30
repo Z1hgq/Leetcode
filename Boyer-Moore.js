@@ -24,7 +24,7 @@ function Bm(parent, child) {
 }
 
 function bad(badC, child, i) {
-    return i - child.indexOf(badC);
+    return i - child.lastIndexOf(badC);
 }
 
 function good(goodS, child) {
