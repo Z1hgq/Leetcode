@@ -15,6 +15,7 @@ function Bm(parent, child) {
             } else {
                 badC = parent[baseP + i];
                 goodS = child.substring(i + 1);
+
                 //选择坏字符规则和好后缀规则计算出的较长的后移位数
                 let b = bad(badC, child, i);
                 let g = good(goodS, child)
@@ -33,7 +34,8 @@ function Bm(parent, child) {
 }
 
 function bad(badC, child, i) {
-    return i - child.lastIndexOf(badC);
+    let sub = child.substring(0, i + 1); //去除好后缀
+    return i - sub.lastIndexOf(badC);
 }
 
 function good(goodS, child) {
@@ -69,35 +71,8 @@ function randomString(len) {
     　　}
     　　return pwd;
 }
-// fs.writeFile('str.txt', randomString(50000000), function (error) {
-//     if (error) {
-//       console.log('写入失败')
-//     } else {
-//       console.log('写入成功了')
-//     }
-// })
-// fs.readFile('str.txt', function (error, data) {
-//     if (error) {
-//       console.log('读取文件失败了')
-//     } else {
-//       console.log(data.toString().length);
-//       var startTime = new Date();
-//       console.log(Bm(data.toString(), "MyKCEi5YBw6DNT4"))
-//       var endTime = new Date();
-//       console.log(endTime - startTime);
-//     }
-// })
-// fs.readFile('str.txt', function (error, data) {
-//     if (error) {
-//       console.log('读取文件失败了')
-//     } else {
-//       console.log(data.toString().length);
-//       var startTime = new Date();
-//       console.log(data.toString().indexOf("MyKCEi5YBw6DNT4"))
-//       var endTime = new Date();
-//       console.log(endTime - startTime);
-//     }
-// })
+
+
 
 function Bf(parent,child){
     for(let i = 0;i < parent.length; i++){
@@ -114,14 +89,46 @@ function Bf(parent,child){
     }
     return -1;
 }
+// fs.writeFile('str.txt', randomString(30000000), function (error) {
+//     if (error) {
+//       console.log('写入失败')
+//     } else {
+//       console.log('写入成功了')
+//     }
+// })
+
+// fs.readFile('str.txt', function (error, data) {
+//     if (error) {
+//       console.log('读取文件失败了')
+//     } else {
+//       console.log(data.toString().length);
+//       var startTime = new Date();
+//       console.log(data.toString().indexOf("MyKCEi5YBw6DNT4"))
+//       console.log(data.toString().substring(30000000-500))
+//       var endTime = new Date();
+//       console.log(endTime - startTime);
+//     }
+// })
+
 fs.readFile('str.txt', function (error, data) {
     if (error) {
       console.log('读取文件失败了')
     } else {
       console.log(data.toString().length);
       var startTime = new Date();
-      console.log(Bf(data.toString(), "JMQQ6wANC5tKG43hawSFwdKeAYYjz5dyKbC5m3tt"))
+      console.log("BM:", Bm(data.toString(), "jc3TrXacMDytprhhbjY6WtEdFjkpkR5ARJxSWrPbp2fBjDYPzmMdYQPGGPDsPzPtAS446Gd3iMENswYBW5NcFTpBF587abHsyYjXD7ZsHrce2FRbrkkpFeBGf6Z7XFpdHhp58zziGeBRW5WCPrGBC8ecXTb3EyYyNKPypekFEEtWEfWdbkeSGDZfFiY2ESEFyKsb5pXmWBcnJAaCy2iWpM4Nm3HZ8etk2dQjexC7nKi2AAiy8JhpzPbjyZznxSKFDnxt5fK54aQw4GMSE2xycx6QTyxD6C5iZjQy4tDx24XB5krXw6bFPMRaTfZ6dXJXWZmRp6rhNeEFZdymejHDW2hFTibPehsmmj4wDFADwwmM6ds4YcEQxxMNT4RPW4jrtRRMTjabW3JisY2H2nRht6B4yHyrKC4xKQ4bXtC47rNt8jQwWMyQGsQtCp7Q4RyNb4y5mKHHCXaMfccPJinyEiJyaRxw3azJcaykmanYxkRK7njXS6We"))
       var endTime = new Date();
-      console.log(endTime - startTime);
+      console.log("BM Time:", endTime - startTime);
+    }
+})
+fs.readFile('str.txt', function (error, data) {
+    if (error) {
+      console.log('读取文件失败了')
+    } else {
+      console.log(data.toString().length);
+      var startTime = new Date();
+      console.log("BF",Bf(data.toString(), "jc3TrXacMDytprhhbjY6WtEdFjkpkR5ARJxSWrPbp2fBjDYPzmMdYQPGGPDsPzPtAS446Gd3iMENswYBW5NcFTpBF587abHsyYjXD7ZsHrce2FRbrkkpFeBGf6Z7XFpdHhp58zziGeBRW5WCPrGBC8ecXTb3EyYyNKPypekFEEtWEfWdbkeSGDZfFiY2ESEFyKsb5pXmWBcnJAaCy2iWpM4Nm3HZ8etk2dQjexC7nKi2AAiy8JhpzPbjyZznxSKFDnxt5fK54aQw4GMSE2xycx6QTyxD6C5iZjQy4tDx24XB5krXw6bFPMRaTfZ6dXJXWZmRp6rhNeEFZdymejHDW2hFTibPehsmmj4wDFADwwmM6ds4YcEQxxMNT4RPW4jrtRRMTjabW3JisY2H2nRht6B4yHyrKC4xKQ4bXtC47rNt8jQwWMyQGsQtCp7Q4RyNb4y5mKHHCXaMfccPJinyEiJyaRxw3azJcaykmanYxkRK7njXS6We"))
+      var endTime = new Date();
+      console.log("BF Time:",endTime - startTime);
     }
 })
