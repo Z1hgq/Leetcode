@@ -11,7 +11,7 @@ var permute = function (nums) {
 
 var Recursive = function (res, tmp, arr, start, end) {
     if (start == end) {
-        tmp = [...arr];
+        tmp = [...arr]; //用另一个变量来存储每一次想要的结果，避免因为递归所有的结果都一样
         res.push(tmp);
         return res;
     } else {
