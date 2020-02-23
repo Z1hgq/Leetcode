@@ -1,4 +1,8 @@
 /**
+ * gps轨迹抽稀算法
+ * @author: Z1hgq
+ */
+/**
  * 点到直线的距离
  * @param a float
  * @param b float
