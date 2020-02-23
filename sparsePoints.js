@@ -3,12 +3,12 @@
  * @author: Z1hgq
  */
 /**
- * 点到直线的距离
- * @param a float
- * @param b float
- * @param c float
- * @param xy obj 点坐标例如{ lat: 2, lng: 2 }
- * @return number
+ * 点到直线的距离，直线方程为 ax + by + c = 0
+ * @param {Number} a 直线参数a
+ * @param {Number} b 直线参数b
+ * @param {Number} c 直线参数c
+ * @param {Object} xy 点坐标例如{ lat: 2, lng: 2 }
+ * @return {Number}
  */
 function getDistanceFromPointToLine(a, b, c, xy) {
     const x = xy.lng;
@@ -18,9 +18,9 @@ function getDistanceFromPointToLine(a, b, c, xy) {
 
 /**
  * 根据两个点求直线方程 ax+by+c=0
- * @param xy1 obj 点1,例如{ lat: 1, lng: 1 }
- * @param xy2 obj 点2,例如{ lat: 2, lng: 2 }
- * @return array
+ * @param {Object} xy1 点1,例如{ lat: 1, lng: 1 }
+ * @param {Object} xy2 点2,例如{ lat: 2, lng: 2 }
+ * @return {Array} [a,b,c] 直线方程的三个参数
  */
 function getLineByPoint(xy1, xy2) {
     const x1 = xy1.lng; // 第一个点的经度
@@ -36,9 +36,9 @@ function getLineByPoint(xy1, xy2) {
 }
 /**
  * 稀疏点
- * @param points array 参数为["1,2","2,3"]点集
- * @param max float 阈值,越大稀疏效果越好但是细节越差
- * @return array
+ * @param {Array} points 参数为[{lat: 1, lng: 2},{lat: 3, lng: 4}]点集
+ * @param {Number} max 阈值,越大稀疏效果越好但是细节越差
+ * @return {Array} 稀疏后的点集[{lat: 1, lng: 2},{lat: 3, lng: 4}]，保持和输入点集的顺序一致
  */
 function sparsePoints(points, max) {
     if (points.length < 3) {
