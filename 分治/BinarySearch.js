@@ -14,7 +14,7 @@ function BinarySearch(arr, key) {
   return -1;
 }
 function RecursiveBinarySearch(arr, low, high, key) {
-  const mid = Math.floor((low + high) / 2) + low;
+  const mid = Math.floor((high - low) / 2) + low;
   if (arr[mid] == key) return mid;
   if (low >= high) {
     return -1;
