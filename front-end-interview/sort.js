@@ -8,7 +8,7 @@
  * @param {number} i 
  * @param {number} j 
  */
-function swap (arr, i, j) {
+function swap(arr, i, j) {
     const temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
@@ -18,7 +18,7 @@ function swap (arr, i, j) {
  * @param {array} arr 
  * @returns {array}
  */
-function bubbleSort (arr = []) {
+function bubbleSort(arr = []) {
     const len = arr.length;
     if (len < 2) {
         return arr;
@@ -26,7 +26,7 @@ function bubbleSort (arr = []) {
     for (let i = 0; i < len - 1; i++) {
         // 每次把当前循环中最大的一个数移动到最后面去
         for (j = 0; j < len - 1 - i; j++) {
-            if (arr[j] >= arr[j+1]) {
+            if (arr[j] >= arr[j + 1]) {
                 swap(arr, j, j + 1);
             }
         }
@@ -72,6 +72,27 @@ function partition(arr, left, right) {
     swap(arr, pivot, index - 1);
     return index - 1;
 }
-
-const arr = [1,2,1,1,3,1,3,4,5,6,3,7,8,3,4,6,7,8,3,7,3,2,7,9];
-console.log(bubbleSort(arr));
+/**
+ * 插入排序
+ * @param {array} arr 
+ */
+function insertionSort(arr = []) {
+    if (arr.length < 2) {
+        return arr;
+    }
+    const res = [arr[0]];
+    for (let i = 1; i <= arr.length - 1; i++) {
+        let index = res.length - 1;
+        while (index > -1) {
+            if (res[index] > arr[i]) {
+                res[index + 1] = res[index];
+                res[index] = arr[i];
+            } else {
+                res[index + 1] = arr[i];
+                break;
+            }
+            index--;
+        }
+    }
+    return res;
+}
