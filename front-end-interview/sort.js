@@ -23,10 +23,11 @@ function bubbleSort (arr = []) {
     if (len < 2) {
         return arr;
     }
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < len - 1; i++) {
+        // 每次把当前循环中最大的一个数移动到最后面去
         for (j = 0; j < len - 1 - i; j++) {
-            if (arr[i] >= arr[j+1]) {
-                swap(arr, i, j + 1);
+            if (arr[j] >= arr[j+1]) {
+                swap(arr, j, j + 1);
             }
         }
     }
@@ -72,4 +73,5 @@ function partition(arr, left, right) {
     return index - 1;
 }
 
- 
+const arr = [1,2,1,1,3,1,3,4,5,6,3,7,8,3,4,6,7,8,3,7,3,2,7,9];
+console.log(bubbleSort(arr));
