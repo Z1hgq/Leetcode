@@ -112,3 +112,56 @@ function simpleInsertionSort(arr = []) {
     }
     return arr;
 }
+/** 
+ * 归并排序
+ * 将两个有序的数组进行合并，递归
+ * @param {array} arr 
+ */
+function mergeSort(arr = []) {
+    const len = arr.length;
+    if (len < 2) {
+        return arr;
+    }
+    const middle = Math.floor(len / 2),
+        left = arr.slice(0, middle),
+        right = arr.slice(middle);
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    const result = [];
+    while (left.length > 0 && right.length > 0) {
+        if (left[0] <= right[0]) {
+            result.push(left.shift());
+        } else {
+            result.push(right.shift());
+        }
+    }
+    while (left.length) {
+        result.push(left.shift());
+    }
+    while (right.length) {
+        result.push(right.shift());
+    }
+    return result;
+}
+/**
+ * 选择排序
+ * @param {Array} arr 
+ */
+function selectSort(arr = []) {
+    const len = arr.length;
+    for (let i = 0; i <= len - 1; i++) {
+        let minEle = arr[i];
+        let minIndex = i;
+        for (j = i; j <= len - 1; j++) {
+            if (minEle > arr[j]) {
+                minEle = arr[j];
+                minIndex = j;
+            }
+        }
+        swap(arr, i, minIndex);
+    }
+    return arr;
+}
+
