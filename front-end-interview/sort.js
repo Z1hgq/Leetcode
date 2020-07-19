@@ -73,7 +73,7 @@ function partition(arr, left, right) {
     return index - 1;
 }
 /**
- * 插入排序
+ * 插入排序1
  * @param {array} arr 
  */
 function insertionSort(arr = []) {
@@ -95,4 +95,20 @@ function insertionSort(arr = []) {
         }
     }
     return res;
+}
+/**
+ * 插入排序2
+ * @param {arr} arr 
+ */
+function simpleInsertionSort(arr = []) {
+    for (let i = 1; i < arr.length; i++) {
+        let preIndex = i - 1;
+        const current = arr[i];
+        while (preIndex >= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex + 1] = current;
+    }
+    return arr;
 }
