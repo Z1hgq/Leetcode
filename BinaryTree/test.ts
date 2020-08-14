@@ -3,7 +3,13 @@ import {
     getPreorderTraversalRec, 
     preorderTraversal, 
     inorderTraversal,
-    postorderTraversal
+    postorderTraversal,
+    dfsRes,
+    dfs,
+    bfs,
+    maxDepth,
+    isBalancedBTree,
+    maxPathSum
 } from './index';
 
 const node = {
@@ -72,3 +78,10 @@ console.log(`先序递归: `, getPreorderTraversalRec(node));
 console.log(`先序非递归: `, preorderTraversal(node));
 console.log(`中序遍历: `, inorderTraversal(node));
 console.log(`后序遍历: `, postorderTraversal(node));
+console.log(`递归深度优先遍历: `, dfsRes(node));
+console.log(`分治深度优先遍历: `, dfs(node));
+console.log(`广度优先遍历: `, bfs(node));
+console.log(`二叉树最大深度: `, maxDepth(node));
+console.log(`平衡二叉树: `, isBalancedBTree(node));
+console.log(`最大路径: `, maxPathSum(node));
+
