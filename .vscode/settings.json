@@ -10,6 +10,6 @@
   },
   // 选中高亮的颜色
      "workbench.colorCustomizations": {
-      "editor.selectionBackground": "#aa0000"
+      "editor.selectionBackground": "#000000"
   }
 }
