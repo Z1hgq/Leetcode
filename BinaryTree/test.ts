@@ -1,7 +1,7 @@
-import { 
-    TreeNode, 
-    getPreorderTraversalRec, 
-    preorderTraversal, 
+import {
+    TreeNode,
+    getPreorderTraversalRec,
+    preorderTraversal,
     inorderTraversal,
     postorderTraversal,
     dfsRes,
@@ -9,8 +9,9 @@ import {
     bfs,
     maxDepth,
     isBalancedBTree,
-    maxPathSum
-} from './index';
+    maxPathSum,
+    lowestCommonAncestor,
+} from "./index";
 
 const node = {
     val: 0,
@@ -21,27 +22,27 @@ const node = {
             left: {
                 val: 7,
                 left: null,
-                right: null
+                right: null,
             },
             right: {
                 val: 8,
                 left: null,
-                right: null
-            }
+                right: null,
+            },
         },
         right: {
             val: 4,
             left: {
                 val: 9,
                 left: null,
-                right: null
+                right: null,
             },
             right: {
                 val: 10,
                 left: null,
-                right: null
-            }
-        }
+                right: null,
+            },
+        },
     },
     right: {
         val: 2,
@@ -50,29 +51,29 @@ const node = {
             left: {
                 val: 11,
                 left: null,
-                right: null
+                right: null,
             },
             right: {
                 val: 12,
                 left: null,
-                right: null
-            }
+                right: null,
+            },
         },
         right: {
             val: 6,
             left: {
                 val: 13,
                 left: null,
-                right: null
+                right: null,
             },
             right: {
                 val: 14,
                 left: null,
-                right: null
-            }
-        }
-    }
-}
+                right: null,
+            },
+        },
+    },
+};
 
 console.log(`先序递归: `, getPreorderTraversalRec(node));
 console.log(`先序非递归: `, preorderTraversal(node));
@@ -84,4 +85,19 @@ console.log(`广度优先遍历: `, bfs(node));
 console.log(`二叉树最大深度: `, maxDepth(node));
 console.log(`平衡二叉树: `, isBalancedBTree(node));
 console.log(`最大路径: `, maxPathSum(node));
-
+console.log(
+    `最近的公共祖先: `,
+    lowestCommonAncestor(
+        node,
+        {
+            val: 8,
+            left: null,
+            right: null,
+        },
+        {
+            val: 9,
+            left: null,
+            right: null,
+        }
+    )
+);

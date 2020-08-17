@@ -242,6 +242,63 @@ function maxPathSumHelper(root: TreeNode): Result {
     return result;
 }
 
+/**
+ * 寻找两个节点的最近公共祖先
+ * @param root 
+ * @param p 
+ * @param q 
+ */
+function lowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode): TreeNode {
+    // 检查是否递归到了树的尽头
+    if (!root) {
+        return root;
+    }
+    // 两者其中的一个为root的话则他们的公共祖先一定是root
+    if (root === p || root === q) {
+        return root;
+    }
+    // divide
+    const left = lowestCommonAncestor(root.left, p, q);
+    const right = lowestCommonAncestor(root.right, p, q);
+    // 左边和右边都有公共祖先
+    if (left && right) {
+        return root;
+    }
+    if (left) {
+        return left;
+    }
+    if (right) {
+        return right;
+    }
+    return null;
+};
+/**
+ * 寻找两个节点的最近公共祖先
+ * 这个方法简单易懂，但是用了两个递归，时间效率很低
+ * @param root 
+ * @param p 
+ * @param q 
+ */
+function anotherLowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode): TreeNode { 
+    if (find(root.left, p) && find(root.left, q)) {
+        return anotherLowestCommonAncestor(root.left, p, q);
+    }
+    if (find(root.right, p) && find(root.right, q)) {
+        return anotherLowestCommonAncestor(root.right, p, q);
+    }
+    return root;
+}
+
+function find(source: TreeNode, target: TreeNode): boolean {
+    if (!source) {
+        return false;
+    }
+    if (source.val === target.val) {
+        return true;
+    }
+    return find(source.left, target) || find(source.right, target);
+}
+
 
 export {
     TreeNode,
@@ -254,5 +311,6 @@ export {
     bfs,
     maxDepth,
     isBalancedBTree,
-    maxPathSum
+    maxPathSum,
+    lowestCommonAncestor
 };
