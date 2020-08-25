@@ -16,7 +16,7 @@ const data = {
  * @param {*} tempKey 中间key
  * @param {*} resultObj 结果
  */
-function flatten(obj, tempKey, resultObj) {
+function objectFlatten(obj, tempKey, resultObj) {
     tempKey = tempKey || '';
     resultObj = resultObj || {};
     // 遍历对象
@@ -26,7 +26,7 @@ function flatten(obj, tempKey, resultObj) {
             // 如果该对象的值为对象的话，那么进行递归
             // 中间key加上当前对象的key和.
             tempKey = tempKey + key + '.';
-            flatten(value, tempKey, resultObj);
+            objectFlatten(value, tempKey, resultObj);
             // 完成之后中间key要清空
             tempKey = '';
         } else {
@@ -36,4 +36,50 @@ function flatten(obj, tempKey, resultObj) {
     };
     return resultObj;
 }
-console.log(flatten(data));
+console.log(objectFlatten(data));
+
+/**
+ * Array.prototype.flatten toString
+ * @param {Array} arr 
+ */
+const arrayFlatten = (arr) => {
+    return arr.toString().split(",").map((item) => +item)
+}
+/**
+ * Array.prototype.flatten 递归
+ * @param {Array} arr 
+ */
+const arrayFlatten = (arr) => {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        if (element && Object.prototype.toString.call(element) === '[object Array]') {
+            newArr = newArr.concat(arrayFlatten(element))
+        } else {
+            newArr.push(element)
+        }
+    }
+    return newArr
+}
+/**
+ * Array.prototype.flatten reduce
+ * @param {Array} arr 
+ */
+const arrayFlatten = (arr) => {
+    return arr.reduce((prev, next) => {
+        return prev.concat(Object.prototype.toString.call(next) === '[object Array]' ? arrayFlatten(next) : next)
+    }, [])
+}
+/**
+ * Array.prototype.flatten 扩展运算符 + while + some
+ * @param {Array} arr 
+ */
+const arrayFlatten = (arr) => {
+    while( arr.some ( item => Array.isArray(item))){
+      arr = [].concat(...arr);
+    }
+    return arr
+  }
+  
+const arr = [1, 2, [3, 4, [5, 6]], 7, 8, [9, 10, 11, [12]]];
+console.log(arrayFlatten(arr));
