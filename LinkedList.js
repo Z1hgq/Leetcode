@@ -172,3 +172,4 @@ const LinkedList = function () {
     return head;
   };
 };
+module.exports = LinkedList;
