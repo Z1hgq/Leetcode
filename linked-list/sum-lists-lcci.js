@@ -1,5 +1,5 @@
 /**
- * https://leetcode-cn.com/problems/sum-lists-lcci/submissions/
+ * https://leetcode-cn.com/problems/sum-lists-lcci
  * Definition for singly-linked list.
  * function ListNode(val) {
  *     this.val = val;
