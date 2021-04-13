@@ -1,3 +1,9 @@
+/*
+ * @Description: flatten
+ * @Autor: gqzhang
+ * @LastEditors: gqzhang
+ * @LastEditTime: 2021-03-23 16:57:47
+ */
 const data = {
     a: {
         b: 1,
@@ -36,6 +42,20 @@ function objectFlatten(obj, tempKey, resultObj) {
     };
     return resultObj;
 }
+const flatten = (data, temp, res) => {
+    temp = temp || '';
+    res = res || {};
+    Object.keys(data).forEach(key => {
+        if (Object.prototype.toString.call(data[key]) === '[object Object]') {
+            temp = temp + key;
+            flatten(data[key], temp, res);
+            temp = '';
+        } else {
+            res[temp + key] = data[key];
+        }
+    })
+    return res;
+};
 console.log(objectFlatten(data));
 
 /**

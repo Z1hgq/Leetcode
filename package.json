@@ -1,0 +1,22 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Boyer-Moore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z1hgq/Leecode.git"
+  },
+  "author": "Z1hgq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Z1hgq/Leecode/issues"
+  },
+  "homepage": "https://github.com/Z1hgq/Leecode#readme",
+  "devDependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

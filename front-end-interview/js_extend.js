@@ -1,3 +1,9 @@
+/*
+ * @Description: 
+ * @Autor: gqzhang
+ * @LastEditors: gqzhang
+ * @LastEditTime: 2021-03-15 14:09:20
+ */
 /*****************************
  * JavaScript实现继承的几种方式
  **************************/
