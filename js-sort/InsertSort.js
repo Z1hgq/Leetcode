@@ -14,9 +14,10 @@
  * 6. 重复步骤2~5。
 */
 const InsertSort = (arr = []) => {
+    let cur, index;
     for (let i = 1; i < arr.length; i++) {
-        const cur = arr[i];
-        let index = i - 1;
+        cur = arr[i];
+        index = i - 1;
         while (index > 0 && cur < arr[index]) {
             arr[index + 1] = arr[index];
             index--;

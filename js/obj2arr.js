@@ -30,11 +30,11 @@ const deep = (node) => {
             name: cur.name
         })
         const children = cur.children;
-        if (children && children.length) [
+        if (children && children.length) {
             children.forEach(item => {
                 stack.push(item);
             })
-        ]
+        }
     }
     console.log(res);
 }
