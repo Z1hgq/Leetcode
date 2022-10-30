@@ -102,16 +102,45 @@ class CustomPromise {
   }
 }
 
-const p = new CustomPromise((resolve, reject) => {
+CustomPromise.prototype.all = (args) => {
+  if (!Array.isArray(args)) {
+    return new CustomPromise((resolve ,reject) => reject('arguments must be an error'))
+  }
+  const result = []
+  return new CustomPromise((resolve, reject) => {
+    for (const index in args) {
+      const func = args[index]
+      if (!(func instanceof CustomPromise)) {
+        reject(`arguments must all instance of CustomPromise`)
+      }
+      func.then(res => {
+        result[index] = res
+        if (result.length === args.length) {
+          resolve(result)
+        }
+      }).catch(err => {
+        reject(err)
+      })
+    }
+  })
+}
+
+const p1 = new CustomPromise((resolve, reject) => {
   setTimeout(() => {
-    reject(2)
+    resolve(1)
   }, 1000)
 })
-p.then((res) => {
-  console.log(res, rej)
-}, (err) => {
-  console.log(err)
+const p2 = new CustomPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(2)
+  }, 2000)
 })
-p.catch((err) => {
-  console.log(err)
+const p3 = new CustomPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(3)
+  }, 3000)
+})
+const all = new CustomPromise(() => {}).all([p1,p2,p3])
+all.then(res => {
+  console.log(res)
 })
