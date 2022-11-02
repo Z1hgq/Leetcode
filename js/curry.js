@@ -4,16 +4,20 @@
  * @LastEditors: gqzhang
  * @LastEditTime: 2021-03-17 18:17:19
  */
-function curry(func) {
-    return function curried(...args) {
-        if (args.length >= func.length) {
-            return func.apply(this, args);
+function curry(fun, args) {
+    const len = fun.length
+    args = args || []
+    return function () {
+        // 收集参数
+        const newArgs = args.concat(Array.prototype.slice.call(arguments))
+        if (newArgs.length < len) {
+            // 递归柯里化，继续收集参数
+            return curry.call(this, fun, newArgs)
         } else {
-            return function (...args2) {
-                return curried.apply(this, args.concat(args2));
-            }
+            // 函数执行
+            return fun.apply(this, newArgs)
         }
-    };
+    }
 }
 
 function add(a, b, c) {
