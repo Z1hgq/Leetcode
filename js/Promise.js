@@ -106,7 +106,8 @@ CustomPromise.prototype.all = (args) => {
   if (!Array.isArray(args)) {
     return new CustomPromise((resolve ,reject) => reject('arguments must be an error'))
   }
-  const result = []
+  const result = new Array(args.length)
+  let count = 0
   return new CustomPromise((resolve, reject) => {
     for (const index in args) {
       const func = args[index]
@@ -115,7 +116,8 @@ CustomPromise.prototype.all = (args) => {
       }
       func.then(res => {
         result[index] = res
-        if (result.length === args.length) {
+        count++
+        if (count === args.length) {
           resolve(result)
         }
       }).catch(err => {
