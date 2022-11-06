@@ -5,7 +5,7 @@
  */
 const throttle = (fn, delay = 500) => {
     let flag = true;
-    return (...args) => {
+    return function(...args) {
         // 每次调用进来之后，如果flag === false 表示上一次的执行还没有结束，那么不会执行调用函数，直接返回
         if (!flag) return;
         // 如果flag === true 表示上一次的节流已经执行完了，开始下一次的执行，把flag置为false，表示下次调用节流函数不能执行
@@ -18,3 +18,12 @@ const throttle = (fn, delay = 500) => {
         }, delay);
     };
 };
+var c = 1
+function a() {
+    console.log(this.c)
+}
+const b = throttle(a, 1000)
+
+setInterval(() => {
+    b()
+}, 100)
